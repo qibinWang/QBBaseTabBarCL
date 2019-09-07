@@ -19,7 +19,7 @@
     return YES;
    }
   ```
- + window属性配置
++ window属性配置
    ```objc
    - (UIWindow *)window
     {
@@ -31,8 +31,8 @@
     return _window;
     }
   ```
-  
-  ### 参考链接:https://github.com/NJHu/iOSProject
++ 代码参考链接
+## 参考链接:https://github.com/NJHu/iOSProject
 
     
 
