@@ -17,9 +17,9 @@
     // 欢迎视图
     [QBIntroductoryPagesHelper showIntroductoryPageView:@[@"default_1.png", @"default_2.png", @"default_3.png"]];
     return YES;
-}
-    ```
-   # 参考链接:https://github.com/NJHu/iOSProject
+   }
+  ```
+  ### 参考链接:https://github.com/NJHu/iOSProject
 
     
 
