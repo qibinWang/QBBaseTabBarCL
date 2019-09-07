@@ -8,7 +8,7 @@
    - "#import "QBIntroductoryPagesHelper.h"
    
 + 启动方法中设置"QBTabBarController"到window视图，并将控制放入数组中,随后跟着启动图配置
-   ```python
+   ```objc
   - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     QBTabBarController *tabbar = [[QBTabBarController alloc] init];
     [tabbar addControllerArr:@[@"ViewController",@"ViewController",@"ViewController"]];
@@ -19,17 +19,17 @@
     return YES;
    }
   ```
- +window属性配置
-   ```python
+ + window属性配置
+   ```objc
    - (UIWindow *)window
-{
+    {
     if(!_window){
         _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
         _window.backgroundColor = [UIColor whiteColor];
         [_window makeKeyAndVisible];
     }
     return _window;
-}
+    }
   ```
   
   ### 参考链接:https://github.com/NJHu/iOSProject
