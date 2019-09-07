@@ -19,6 +19,19 @@
     return YES;
    }
   ```
+ +window属性配置
+   ```python
+   - (UIWindow *)window
+{
+    if(!_window){
+        _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _window.backgroundColor = [UIColor whiteColor];
+        [_window makeKeyAndVisible];
+    }
+    return _window;
+}
+  ```
+  
   ### 参考链接:https://github.com/NJHu/iOSProject
 
     
