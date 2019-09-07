@@ -29,8 +29,6 @@
     return pagesView;
 }
 
-
-
 - (void)setupUIOnce
 {
     self.backgroundColor = [UIColor clearColor];
@@ -56,26 +54,21 @@
     [self.imagesArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
 //        YYAnimatedImageView *imageView = [[YYAnimatedImageView alloc]init];
-//
 //        imageView.frame = CGRectMake(idx * kScreenWidth, 0, kScreenWidth, kScreenHeight);
-//
 //        YYImage *image = [YYImage imageNamed:obj];
-//
 //        [imageView setImage:image];
-//
 //        [self.scrollView addSubview:imageView];
         
-        
         UIImageView *imageView = [[UIImageView alloc]init];
-        
         imageView.frame = CGRectMake(idx * kScreenWidth, 0, kScreenWidth, kScreenHeight);
-        
+        if (idx == (self.imagesArray.count - 1)) {
+            UIButton *passBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-70.0f, 40.0f, 50.0f, 40.0f)];
+            [passBtn setImage:[UIImage imageNamed:@"default_pass"] forState:UIControlStateNormal];
+            [imageView addSubview:passBtn];
+        }
         UIImage *image = [UIImage imageNamed:obj];
-        
         [imageView setImage:image];
-        
         [self.scrollView addSubview:imageView];
-
     }];
 }
 
@@ -99,7 +92,6 @@
         [self removeFromSuperview];
     }
 }
-
 
 - (UIScrollView *)scrollView
 {

@@ -10,16 +10,13 @@
 #import "QBNavigationController.h"
 
 @interface QBTabBarController ()<UITabBarControllerDelegate>
-
+@property(nonatomic,strong)NSMutableArray *controllerArr;
 @end
 
 @implementation QBTabBarController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self addChildViewControllers];
-    [self addTabarItems];
-    self.delegate = self;
 }
 - (void)customIsInGod:(NSNotification *)noti {
     if (![noti.object boolValue]) {
@@ -27,14 +24,23 @@
     }
 }
 
+-(void)addControllerArr:(NSArray *)controllerArr{
+    self.controllerArr = [controllerArr mutableCopy];
+    [self addChildViewControllers];
+    [self addTabarItems];
+    self.delegate = self;
+}
+
 - (void)addChildViewControllers
 {
-    //在此处添加控制器
-    QBNavigationController *one = [[QBNavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
-    QBNavigationController *two = [[QBNavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
-    QBNavigationController *three = [[QBNavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
-    QBNavigationController *four = [[QBNavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
-    self.viewControllers = @[ one,two,three, four];
+    NSMutableArray *tempArr = [NSMutableArray arrayWithCapacity:5];
+    [self.controllerArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        //在此处添加控制器
+        QBNavigationController *controller = [[QBNavigationController alloc] initWithRootViewController:[[NSClassFromString(obj) alloc] init]];
+        [tempArr addObject:controller];
+    }];
+
+    self.viewControllers = [tempArr mutableCopy];
 }
 
 - (void)addTabarItems
@@ -82,4 +88,10 @@
     return YES;
 }
 
+-(NSMutableArray *)controllerArr{
+    if (!_controllerArr) {
+        _controllerArr = [NSMutableArray arrayWithCapacity:5];
+    }
+    return _controllerArr;
+}
 @end

@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface QBTabBarController : UITabBarController
-
+-(void)addControllerArr:(NSArray *)controllerArr;
 @end
 
 NS_ASSUME_NONNULL_END
